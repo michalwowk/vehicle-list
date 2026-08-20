@@ -1,7 +1,8 @@
-import './App.css'
+import "./App.css";
+import { VehiclesView } from "./components/VehiclesView";
 
 function App() {
-  return null
+  return <VehiclesView />;
 }
 
-export default App
+export default App;
