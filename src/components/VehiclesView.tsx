@@ -4,6 +4,7 @@ import { getVisibleVehicles } from "../utils/vehicles";
 import type { SortOrder } from "../utils/sort";
 import { VehicleFilters } from "./VehicleFilters";
 import { VehicleList } from "./VehicleList";
+import { VehicleSort } from "./VehicleSort";
 
 export function VehiclesView() {
   const { status, vehicles, savePrice } = useVehicles();
@@ -14,21 +15,22 @@ export function VehiclesView() {
     <main>
       <section className="vehicles-view">
         <h1>Vehicles</h1>
-        <VehicleFilters
-          filter={filter}
-          onFilterChange={setFilter}
-          sortOrder={sortOrder}
-          onSortOrderChange={setSortOrder}
-        />
+        <VehicleFilters filter={filter} onFilterChange={setFilter} />
         {status === "loading" && <p>Loading vehicles…</p>}
         {status === "error" && (
           <p>Failed to load vehicles. Please try again.</p>
         )}
         {status === "ready" && (
-          <VehicleList
-            vehicles={getVisibleVehicles(vehicles, filter, sortOrder)}
-            onSavePrice={savePrice}
-          />
+          <>
+            <VehicleList
+              vehicles={getVisibleVehicles(vehicles, filter, sortOrder)}
+              onSavePrice={savePrice}
+            />
+            <VehicleSort
+              sortOrder={sortOrder}
+              onSortOrderChange={setSortOrder}
+            />
+          </>
         )}
       </section>
     </main>

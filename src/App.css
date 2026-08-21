@@ -4,17 +4,26 @@
   padding: 2rem 1rem;
 }
 
-.vehicle-filters {
+.vehicle-filters,
+.vehicle-sort {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
-.vehicle-filters label {
+.vehicle-filters label,
+.vehicle-sort label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.vehicle-filters {
+  margin-bottom: 1rem;
+}
+
+.vehicle-sort {
+  margin-top: 1rem;
 }
 
 .vehicle-items {
